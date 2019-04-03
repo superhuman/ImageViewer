@@ -733,4 +733,11 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
         self.overlayView.removeFromSuperview()
         self.dismiss(animated: false, completion: nil)
     }
+
+    open override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(input: "`", modifierFlags: [], action: #selector(closeInteractively)),
+            UIKeyCommand(input: UIKeyCommand.inputEscape, modifierFlags: [], action: #selector(closeInteractively))
+        ]
+    }
 }
