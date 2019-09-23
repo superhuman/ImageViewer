@@ -669,7 +669,7 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
         animateDecorationViews(visible: !self.decorationViewsHidden)
     }
 
-    open func itemControllerDidLongPress(_ controller: ItemController, in item: ItemView) {
+    open func itemControllerDidLongPress(_ controller: ItemController, in item: ItemView, at point: CGPoint) {
         switch (controller, item) {
 
         case (_ as ImageViewController, let item as UIImageView):
@@ -684,7 +684,7 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
                 UIApplication.applicationWindow.windowLevel = self.statusBarHidden ? UIWindow.Level.statusBar : UIWindow.Level.normal
             }
             activityVC.popoverPresentationController?.sourceView = item
-            activityVC.popoverPresentationController?.sourceRect = item.bounds
+            activityVC.popoverPresentationController?.sourceRect = CGRect(origin: point, size: .zero)
             self.present(activityVC, animated: true)
 
         case (_ as VideoViewController, let item as VideoView):
